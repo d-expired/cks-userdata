@@ -57,7 +57,4 @@ systemctl daemon-reload
 service kubelet start
 
 mkdir -p ~/.kube
-sudo cp -i /etc/kubernetes/kubelet.conf ~/.kube/config
-
-echo
-echo
+cp -i /etc/kubernetes/kubelet.conf ~/.kube/config
