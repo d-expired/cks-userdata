@@ -18,8 +18,6 @@ echo 'complete -F __start_kubectl k' >> ~/.bashrc
 sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
 
 
-
-
 ### install k8s and docker
 apt-get install -y etcd-client vim build-essential
 
