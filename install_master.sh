@@ -56,14 +56,6 @@ systemctl enable kubelet && systemctl start kubelet
 rm /root/.kube/config
 kubeadm init --kubernetes-version=${KUBE_VERSION} --ignore-preflight-errors=NumCPU --skip-token-print
 
-mkdir -p ~/.kube
-cp -i /etc/kubernetes/admin.conf ~/.kube/config
-
-sleep 5
-
-# Installing Weave CNI
-kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-
 # Additional tasks
 echo "alias kgp='k get pods'" >> ~/.bashrc
 echo "alias kgpw='watch kubectl get pods'" >> ~/.bashrc
