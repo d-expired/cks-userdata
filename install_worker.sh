@@ -55,6 +55,3 @@ systemctl enable kubelet && systemctl start kubelet
 kubeadm reset -f
 systemctl daemon-reload
 service kubelet start
-
-mkdir -p ~/.kube
-cp -i /etc/kubernetes/kubelet.conf ~/.kube/config
