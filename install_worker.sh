@@ -16,8 +16,6 @@ sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
 
 
 ### install k8s and docker
-apt-get remove -y docker.io kubelet kubeadm kubectl kubernetes-cni
-apt-get autoremove -y
 apt-get install -y etcd-client vim build-essential
 
 systemctl daemon-reload
@@ -43,15 +41,14 @@ systemctl daemon-reload
 systemctl restart docker
 
 # start docker on reboot
-systemctl enable docker
+systemctl enable docker --now
 
 docker info | grep -i "storage"
 docker info | grep -i "cgroup"
 
-systemctl enable kubelet && systemctl start kubelet
+systemctl enable kubelet --now
 
 
 ### init k8s
-kubeadm reset -f
 systemctl daemon-reload
-service kubelet start
+systemctl restart kubelet
