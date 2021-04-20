@@ -15,7 +15,7 @@ echo 'alias kgpw="watch kubectl get pods"' >> ~/.bashrc
 echo 'alias c=clear' >> ~/.bashrc
 echo 'complete -F __start_kubectl k' >> ~/.bashrc
 sed -i '1s/^/force_color_prompt=yes\n/' ~/.bashrc
-export HOME=/root
+
 
 ### install k8s and docker
 apt-get install -y etcd-client vim build-essential
@@ -27,7 +27,7 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 KUBE_VERSION=1.21.0
 apt-get update
-apt-get install -y docker.io="20.10.2-0ubuntu1~18.04.2" kubelet=${KUBE_VERSION}-00 kubeadm=${KUBE_VERSION}-00 kubectl=${KUBE_VERSION}-00 kubernetes-cni=0.8.7-00
+apt-get install -y docker.io kubelet=${KUBE_VERSION}-00 kubeadm=${KUBE_VERSION}-00 kubectl=${KUBE_VERSION}-00 kubernetes-cni=0.8.7-00
 
 cat > /etc/docker/daemon.json <<EOF
 {
@@ -54,5 +54,3 @@ systemctl enable kubelet --now
 ### init k8s
 systemctl daemon-reload
 systemctl restart kubelet
-
-echo "Done installing docker and kubelet"
