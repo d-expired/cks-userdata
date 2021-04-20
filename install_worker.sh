@@ -27,6 +27,7 @@ deb http://apt.kubernetes.io/ kubernetes-xenial main
 EOF
 KUBE_VERSION=1.21.0
 apt-get update
+apt-get install -y containerd="1.2.6-0ubuntu1~18.04.2"
 apt-get install -y docker.io="19.03.6-0ubuntu1~18.04.2" kubelet=${KUBE_VERSION}-00 kubeadm=${KUBE_VERSION}-00 kubectl=${KUBE_VERSION}-00 kubernetes-cni=0.8.7-00
 
 cat > /etc/docker/daemon.json <<EOF
