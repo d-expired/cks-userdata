@@ -54,3 +54,5 @@ systemctl enable kubelet --now
 ### init k8s
 systemctl daemon-reload
 systemctl restart kubelet
+
+echo "Done installing docker and kubelet"
